@@ -14,14 +14,16 @@ module ATM(Clock,         // module clock
            Ready,         // one bit, led that shows ATM is ready for a credit card
            Working,       // one bit, led that shows ATM is working
            ErrPass,       // one bit, Error that shows the password entered is unauthorized
-           ErrValue);     // one bit, Error that shows account balance is not enough to withdraw
+           ErrValue,      // one bit, Error that shows account balance is not enough to withdraw
+           State,         // just for debuging
+           NextState);    // debuging
 
   input Clock, Clear, CardIn, Eject, Submit, ShowBalance, Withdraw;
   input [3:0] Password;
   input [4:0] Value;
   output Ready, Working, ErrPass, ErrValue;
   reg Ready, Working, ErrPass, ErrValue;
-  output reg [4:0] BalanceValue;
+  output [4:0] BalanceValue;
 
 
   parameter ON = 1'b1;
@@ -31,10 +33,10 @@ module ATM(Clock,         // module clock
         DEAD        = 4'b0001,     // state that can accept a credit card
         PASSCHECK   = 4'b0010,     // state that inputs password and check it if is authorized
         WORKPLACE   = 4'b0100,     // state that it can choose four differen options 1- balance 2-eject 3- balance and withdraw 4- just withdraw
-        MONEY       = 4'b1000,     // state that input is available for withdrawing
+        MONEY       = 4'b1000;     // state that input is available for withdrawing
 
-  output reg [2:0] State;
-  output reg [2:0] NextState;
+  output reg [3:0] State;
+  output reg [3:0] NextState;
 
   reg [9:0] accounts_balance_RAM [0:4];
   wire [3:0] ID;       // id of person who entered the password
@@ -51,20 +53,21 @@ module ATM(Clock,         // module clock
 
   // instantiate an object of type BalanceView to show the balance
   BalanceView SomeRandomName2(ID, ShowBalance, BalanceValue);
+  // wire BalanceValueOut;
 
 
   // Update state or reset on every + clock edge
   //
   always @(posedge Clock) begin
     if (Clear)
-      State <= A;
+      State <= DEAD;
     else
       State <= NextState;
     end
 
   // Next state generation logic
   // OUTPUT generation logic
-  always @(State or CardIn or Eject or Submit or Balance or Withdraw or JustWithdraw or password or Value) begin
+  always @(State or CardIn or Eject or Submit or ShowBalance or Withdraw or Password or Value) begin
     case (State)
 
       DEAD: begin
