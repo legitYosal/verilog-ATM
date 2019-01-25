@@ -1,0 +1,176 @@
+# Compile of ATMnewV.v failed with 1 errors.
+# Compile of ATMnewV.v failed with 1 errors.
+# Compile of ATMnewV.v failed with 1 errors.
+# Compile of ATMnewV.v failed with 1 errors.
+# Compile of ATMnewV.v was successful.
+# Compile of ATMnewV.v failed with 2 errors.
+# Compile of ATMnewV.v failed with 2 errors.
+# Compile of ATMnewV.v failed with 1 errors.
+# Compile of ATMnewV.v was successful.
+vsim -voptargs=+acc work.ATM
+# vsim -voptargs=+acc work.ATM 
+# Loading work.ATM
+# Loading work.PasswordAndIdChecker
+# ** Warning: (vsim-3015) F:/University/Logic Circuit/Projects/verilog-ATM/ATMnewV.v(73): [PCDPC] - Port size (8 or 8) does not match connection size (32) for port 'Password'. The port definition is at: F:/University/Logic Circuit/Projects/verilog-ATM/ATMnewV.v(1).
+# 
+#         Region: /ATM/TransferIDChecker
+add wave -position insertpoint sim:/ATM/*
+force -freeze sim:/ATM/Clock 1 0, 0 {50 ps} -r 100
+force -freeze sim:/ATM/Reset 1 0
+run
+force -freeze sim:/ATM/Reset 0 0
+force -freeze sim:/ATM/Password 00000001 0
+force -freeze sim:/ATM/ID 00000001 0
+run
+force -freeze sim:/ATM/Password 11110000 0
+run
+# Next state must change
+force -freeze sim:/ATM/Control 101 0
+run
+run
+force -freeze sim:/ATM/Request 00000010 0
+force -freeze sim:/ATM/DestID 11101000 0
+force -freeze sim:/ATM/Request 00000010 0
+run
+run
+force -freeze sim:/ATM/Eject 1 0
+run
+# Next state must change
+run
+run
+# Next state must change
+run
+run
+# Next state must change
+run
+force -freeze sim:/ATM/Password 11111111 0
+run
+run
+force -freeze sim:/ATM/Eject 0 0
+force -freeze sim:/ATM/ID 11101000 0
+force -freeze sim:/ATM/Password 10110010 0
+force -freeze sim:/ATM/Eject St0 0
+run
+# Next state must change
+run
+force -freeze sim:/ATM/Control 010 0
+run
+run
+run
+force -freeze sim:/ATM/Eject 1 0
+force -freeze sim:/ATM/Eject 1 0
+run
+# Next state must change
+run
+run
+# Next state must change
+force -freeze sim:/ATM/Password 11110000 0
+force -freeze sim:/ATM/ID 00000001 0
+force -freeze sim:/ATM/Eject 0 0
+run
+# Next state must change
+run
+run
+run
+# Compile of ATMnewV.v was successful.
+vsim -voptargs=+acc work.ATM
+# vsim -voptargs=+acc work.ATM 
+# Loading work.ATM
+# Loading work.PasswordAndIdChecker
+# ** Warning: (vsim-3015) F:/University/Logic Circuit/Projects/verilog-ATM/ATMnewV.v(73): [PCDPC] - Port size (8 or 8) does not match connection size (32) for port 'Password'. The port definition is at: F:/University/Logic Circuit/Projects/verilog-ATM/ATMnewV.v(1).
+# 
+#         Region: /ATM/TransferIDChecker
+add wave -position insertpoint sim:/ATM/*
+force -freeze sim:/ATM/Clock 1 0, 0 {50 ps} -r 100
+force -freeze sim:/ATM/Reset 1 0
+run
+force -freeze sim:/ATM/Password 11110000 0
+force -freeze sim:/ATM/ID 00000001 0
+force -freeze sim:/ATM/Reset 0 0
+run
+# Next state must change
+force -freeze sim:/ATM/DestID 10110101 0
+force -freeze sim:/ATM/Request 00000001 0
+force -freeze sim:/ATM/Control 110 0
+run
+run
+force -freeze sim:/ATM/Control 010 0
+run
+run
+run
+force -freeze sim:/ATM/Back 1 0
+run
+run
+force -freeze sim:/ATM/Back 0 0
+run
+run
+run
+run
+run
+force -freeze sim:/ATM/Back 1 0
+run
+force -freeze sim:/ATM/Control 110 0
+run
+run
+force -freeze sim:/ATM/Control 010 0
+force -freeze sim:/ATM/Back 0 0
+run
+run
+force -freeze sim:/ATM/Back 1 0
+force -freeze sim:/ATM/Control 110 0
+run
+run
+run
+run
+force -freeze sim:/ATM/Control 010 0
+run
+run
+run
+run
+run
+force -freeze sim:/ATM/Back 0 0
+run
+force -freeze sim:/ATM/Back 1 0
+run
+force -freeze sim:/ATM/Back 0 0
+force -freeze sim:/ATM/Control 110 0
+run
+run
+run
+run
+force -freeze sim:/ATM/Back 1 0
+force -freeze sim:/ATM/Control 010 0
+run
+run
+run
+force -freeze sim:/ATM/Back 0 0
+run
+quit -sim
+# Compile of ATMnewV.v failed with 1 errors.
+# Compile of ATMnewV.v was successful.
+# Compile of ATMnewV.v failed with 2 errors.
+# Compile of ATMnewV.v failed with 1 errors.
+# Compile of ATMnewV.v was successful.
+vsim -voptargs=+acc work.ATM
+# vsim -voptargs=+acc work.ATM 
+# Loading work.ATM
+# Loading work.PasswordAndIdChecker
+# ** Warning: (vsim-3015) F:/University/Logic Circuit/Projects/verilog-ATM/ATMnewV.v(74): [PCDPC] - Port size (8 or 8) does not match connection size (32) for port 'Password'. The port definition is at: F:/University/Logic Circuit/Projects/verilog-ATM/ATMnewV.v(1).
+# 
+#         Region: /ATM/TransferIDChecker
+add wave -position insertpoint sim:/ATM/*
+force -freeze sim:/ATM/Clock 1 0, 0 {50 ps} -r 100
+force -freeze sim:/ATM/Reset 1 0
+run
+# WARNING: No extended dataflow license exists
+force -freeze sim:/ATM/Password 11110000 0
+force -freeze sim:/ATM/ID 00000001 0
+force -freeze sim:/ATM/Reset 0 0
+run
+# Next state must change
+run
+run
+force -freeze sim:/ATM/Control 101 0
+run
+run
+run
