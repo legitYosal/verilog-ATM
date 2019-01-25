@@ -4,101 +4,121 @@ K3
 cModel Technology
 Z0 dF:\uni\term3\manteghi\Verilog\verilog_ATMmachine
 vATM
-Z1 !s100 3XihOcKU0m5XOTO@j>gMR1
-Z2 I9GQUH96d@PhPCRVBBT:Di0
-Z3 V37@VhFNXB<2FLJ?N>7i5M3
-Z4 dF:\uni\term3\manteghi\Verilog\verilog_ATMmachine\verilog_ATMachine
-Z5 w1548269088
-Z6 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/auto_tell_machine.v
-Z7 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/auto_tell_machine.v
-L0 4
-Z8 OV;L;10.1d;51
+!i10b 1
+!s100 [9h6jFdK<<K;3zLaKdEEI0
+IAAD>h3Ng8QhUh132QMPiP2
+Z1 V3m=zG5F7AlZUlB1i_ZGHa3
+Z2 dF:\uni\term3\manteghi\Verilog\verilog_ATMmachine\verilog_ATMachine
+Z3 w1548439792
+Z4 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/ATMnewV.v
+Z5 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/ATMnewV.v
+L0 39
+Z6 OV;L;10.1d;51
 r1
+!s85 0
 31
-Z9 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/auto_tell_machine.v|
+Z7 !s108 1548439799.218000
+Z8 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/ATMnewV.v|
+Z9 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/ATMnewV.v|
+!s101 -O0
 Z10 o-work work -O0
 Z11 n@a@t@m
-!i10b 1
-!s85 0
-Z12 !s108 1548283182.690000
-Z13 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/auto_tell_machine.v|
-!s101 -O0
 vAuthorizePass
-Z14 I2_<HonjPeFDjG`Hk0D2f32
-Z15 V=@JQDW=he7ZB`d=cNUc[22
-R4
-Z16 w1548202545
-Z17 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v
-Z18 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v
+Z12 I2_<HonjPeFDjG`Hk0D2f32
+Z13 V=@JQDW=he7ZB`d=cNUc[22
+R2
+Z14 w1548202545
+Z15 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v
+Z16 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v
 L0 5
-R8
+R6
 r1
 31
-Z19 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v|
+Z17 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v|
 R10
-Z20 n@authorize@pass
-Z21 !s100 _n8;cb<D>>d9oBP;Kfi=81
-Z22 !s108 1548202549.551000
-Z23 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v|
+Z18 n@authorize@pass
+Z19 !s100 _n8;cb<D>>d9oBP;Kfi=81
+Z20 !s108 1548202549.551000
+Z21 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/check_password.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vBalanceView
-Z24 I]BCS85PaNGbjWo6l@jGI12
-Z25 VKHi6;0z4Y[ooG23E0goCj2
-R4
-Z26 w1548202185
-Z27 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v
-Z28 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v
+Z22 I]BCS85PaNGbjWo6l@jGI12
+Z23 VKHi6;0z4Y[ooG23E0goCj2
+R2
+Z24 w1548202185
+Z25 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v
+Z26 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v
 L0 4
-R8
+R6
 r1
 31
-Z29 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v|
+Z27 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v|
 R10
-Z30 n@balance@view
-Z31 !s100 fYDDJY]SQ^M0QQ3fj_5:o2
-Z32 !s108 1548202193.867000
-Z33 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v|
+Z28 n@balance@view
+Z29 !s100 fYDDJY]SQ^M0QQ3fj_5:o2
+Z30 !s108 1548202193.867000
+Z31 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/show_balance.v|
 !i10b 1
 !s85 0
 !s101 -O0
 vmatarsak
-Z34 IP@Zjd5<[9`M[Yi2aQd@gh2
-Z35 VMhA_XhHmCLAi0;lbZhL6j2
-R4
-Z36 w1548165834
-Z37 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v
-Z38 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v
+Z32 IFU;YSCZeU`nkKoBmY:6T;1
+Z33 VMhA_XhHmCLAi0;lbZhL6j2
+R2
+Z34 w1548433203
+Z35 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v
+Z36 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v
 L0 1
-R8
+R6
 r1
 31
+Z37 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v|
 R10
-Z39 !s100 :BhFM`ISJAae;EU<TN:o02
-Z40 !s108 1548202072.751000
-Z41 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v|
-Z42 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v|
+Z38 !s100 d2ETBBJa6>MCCB[;0d3A?1
+Z39 !s108 1548433207.321000
+Z40 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/delete_after_test.v|
 !i10b 1
 !s85 0
 !s101 -O0
+vPasswordAndIdChecker
+!i10b 1
+Z41 !s100 QXQKn7VegWON54`Gezf_?1
+Z42 I?]aHEg<ZY^;eS^c7i718X3
+Z43 V0SDMHb;<a9e>L5OMK?bzH3
+R2
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!s101 -O0
+R10
+Z44 n@password@and@id@checker
 vTestBench
-!i10b 1
-!s100 ^PPWH6j@@1:;c4nWA^aKW0
-INZh8iG5ORk:>cbRIQg]P20
-Z43 Vi@[nTNQQ52f`[Wh1CCj9M2
-R4
-w1548283167
-Z44 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v
-Z45 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v
+Z45 INZh8iG5ORk:>cbRIQg]P20
+Z46 Vi@[nTNQQ52f`[Wh1CCj9M2
+R2
+Z47 w1548283167
+Z48 8F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v
+Z49 FF:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v
 L0 1
-R8
+R6
 r1
-!s85 0
 31
-!s108 1548283186.382000
-!s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v|
-Z46 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v|
-!s101 -O0
+Z50 !s90 -reportprogress|300|-work|work|F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v|
 R10
-Z47 n@test@bench
+Z51 n@test@bench
+Z52 !s100 ^PPWH6j@@1:;c4nWA^aKW0
+Z53 !s108 1548283186.382000
+Z54 !s107 F:/uni/term3/manteghi/Verilog/verilog_ATMmachine/verilog_ATMachine/TestBench.v|
+!i10b 1
+!s85 0
+!s101 -O0

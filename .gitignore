@@ -5,4 +5,5 @@
 *.v.bak
 #/work
 
+#/version 1.0
 delete_after_test.v
