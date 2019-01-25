@@ -138,9 +138,7 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
           else if (Request <= accounts_balance_ROM[index]) begin
             NextState = IDLE;
             ErrBalance = OFF;
-            $display("%b is beforre reduce", accounts_balance_ROM[index]);
             accounts_balance_ROM[index] = accounts_balance_ROM[index] - Request;
-            $display("%b is reduce", accounts_balance_ROM[index]);
           end
           else if (Request > accounts_balance_ROM[index]) begin
             NextState = IDLE;
@@ -189,31 +187,32 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
             ErrTransf = OFF;
             accounts_balance_ROM[destIndex] = accounts_balance_ROM[destIndex] + Request;
             accounts_balance_ROM[index] = accounts_balance_ROM[index] - Request;
-          end
-          else if (Request > accounts_balance_ROM[index]) begin
+        end
+        else if (Request > accounts_balance_ROM[index]) begin
             NextState = SHOWBALANCE;
             ErrBalance = ON;
             ErrTransf = ON;
-          end
-          else begin
+        end
+        else begin
             ErrBalance = X;
             ErrTransf = X;
             NextState = TRANSFER;
-          end
         end
-        DEPOSIT: begin
-          if (Back) begin
-            ErrBalance = OFF;
-            NextState = IDLE;
-          end
-          else if (Eject) begin
-            ErrBalance = OFF;
-            NextState = CHECKPASS;
-          end
-          else begin
-            accounts_balance_ROM[index] = accounts_balance_ROM[index] + Request;
-          end
+      end
+      DEPOSIT: begin
+        if (Eject) begin
+          NextState = CHECKPASS;
         end
+        else if (Back) begin
+          NextState = IDLE;
+        end
+        else if (Request >= 8'd0 & Request <= 8'b11111111) begin
+          NextState = SHOWBALANCE;
+          accounts_balance_ROM[index] = accounts_balance_ROM[index] + Request;
+        end
+        else
+          NextState = DEPOSIT;
+      end
     endcase 
   end
 
