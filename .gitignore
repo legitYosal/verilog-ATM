@@ -1,5 +1,8 @@
 *.mti
-
 *.mpf
-
+*.wlf
+*.bak
+*.v.bak
 #/work
+
+delete_after_test.v

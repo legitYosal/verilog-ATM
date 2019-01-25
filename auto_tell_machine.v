@@ -16,7 +16,8 @@ module ATM(Clock,         // module clock
            ErrPass,       // one bit, Error that shows the password entered is unauthorized
            ErrValue,      // one bit, Error that shows account balance is not enough to withdraw
            State,         // just for debuging
-           NextState);    // debuging
+           NextState,     // debug
+           ID);    // debuging
 
   input Clock, Clear, CardIn, Eject, Submit, ShowBalance, Withdraw;
   input [3:0] Password;
@@ -38,8 +39,8 @@ module ATM(Clock,         // module clock
   output reg [3:0] State;
   output reg [3:0] NextState;
 
-  reg [9:0] accounts_balance_RAM [0:4];
-  wire [3:0] ID;       // id of person who entered the password
+  reg [4:0] accounts_balance_RAM [0:9];
+  output [3:0] ID;       // id of person who entered the password
   wire PassAuthorized; // on if password was found in rom
 
   // inputing .mem file

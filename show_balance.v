@@ -8,7 +8,7 @@ module BalanceView(ID,             // id of person who register
   input [3:0] ID;
   input ShowBalance;
   output reg [4:0] BalanceValue;
-  reg [9:0] accounts_balance_RAM [0:4];
+  reg [4:0] accounts_balance_RAM [0:9];
 
   // inputing .mem file
   //

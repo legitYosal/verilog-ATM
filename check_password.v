@@ -11,14 +11,14 @@ module AuthorizePass(Password,          // inputed password
   input Submit;
   output reg [3:0] ID;
   output reg  PassAuthorized;
-  reg [9:0] authorized_passwords_ROM [0:3];
+  reg [3:0] authorized_passwords_ROM [0:9];
 
   parameter OFF = 1'b0;
   parameter ON = 1'b1;
   // loading passwords rom
   //
   initial begin
-    $readmemb("authorized_passwordsROM", authorized_passwords_ROM);
+    $readmemb("authorized_passwordsROM.mem", authorized_passwords_ROM);
     end
 
   // finding out is the pass inputed is in ram
