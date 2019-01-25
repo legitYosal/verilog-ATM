@@ -1,5 +1,4 @@
 module PasswordAndIdChecker(Password,ID,IndexOutput,PassAuthorized);
-
   input [7:0] Password;
   input wire [7:0] ID;
   output reg  PassAuthorized;
@@ -20,14 +19,12 @@ module PasswordAndIdChecker(Password,ID,IndexOutput,PassAuthorized);
   //
   integer i;
   always @(Password or ID) begin
-    PassAuthorized = OFF;
-      for(i = 0 ; i<10 ; i = i+1)begin
-           
-           if (Password != authorized_passwords_ROM[i] & ID == authorized_id_ROM[i]) begin
-              PassAuthorized = OFF;
+      PassAuthorized = OFF;
+      for(i = 0 ; i<10 ; i = i+1)begin 
+          if (ID == authorized_id_ROM[i]) begin
               IndexOutput = i;
           end
-          else if(Password == authorized_passwords_ROM[i] & ID == authorized_id_ROM[i])begin
+          if(Password == authorized_passwords_ROM[i] & ID == authorized_id_ROM[i])begin
               PassAuthorized = ON;
               IndexOutput = i;
           end
@@ -38,13 +35,14 @@ endmodule // PasswordAndIdChecker
 
 
 
+
 module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, ErrPass,
-               ErrBalance, ErrID, ErrTransf, BalanceValue);
+               ErrBalance, BalanceValue);
                
   input [0:0] Clock, Reset, Back, Eject;
   input [7:0] Password, ID, Request, DestID;
   input [2:0] Control; //
-  output reg [0:0] ErrPass, ErrBalance, ErrID, ErrTransf;
+  output reg [0:0] ErrPass, ErrBalance;
   output reg [7:0] BalanceValue;
   
   parameter OFF = 1'b0;
@@ -70,7 +68,7 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
   wire [3:0] destIndex;
   wire PassAuthorized;
   PasswordAndIdChecker SomeRandomName(Password,ID,index,PassAuthorized);
-  PasswordAndIdChecker TransferIDChecker(00000000,DestID,destIndex,);
+  PasswordAndIdChecker TransferIDChecker(8'b0,DestID,destIndex,);
   always @(posedge Clock or Reset) begin
     if (Reset)
       State = CHECKPASS;
@@ -86,7 +84,6 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
           ErrPass = ON;
         end
         else if (PassAuthorized == ON) begin
-          $display("Next state must change");
           NextState = IDLE;
           ErrPass = OFF;
         end
@@ -174,28 +171,25 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
       end
       TRANSFER: begin
         if (Back) begin
-            ErrTransf = OFF;
+            ErrBalance = OFF;
             NextState = IDLE;
         end
         else if (Eject) begin
-            ErrTransf = OFF;
+            ErrBalance = OFF;
             NextState = CHECKPASS;
-          end
-        else if (Request <= accounts_balance_ROM[index]) begin
+        end
+        else if ((Request <= accounts_balance_ROM[index]) & (destIndex >= 4'b0000) & (destIndex <= 4'b1111)) begin
             NextState = SHOWBALANCE;
             ErrBalance = OFF;
-            ErrTransf = OFF;
             accounts_balance_ROM[destIndex] = accounts_balance_ROM[destIndex] + Request;
             accounts_balance_ROM[index] = accounts_balance_ROM[index] - Request;
         end
         else if (Request > accounts_balance_ROM[index]) begin
             NextState = SHOWBALANCE;
             ErrBalance = ON;
-            ErrTransf = ON;
         end
         else begin
             ErrBalance = X;
-            ErrTransf = X;
             NextState = TRANSFER;
         end
       end
@@ -217,5 +211,107 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
   end
 
 endmodule // ATM
-      
+
+
+
+module PasswordAndIdCheckerTESTBENCH();
+  wire PassAuthorized;
+  wire [3:0] IndexOutput;
   
+  reg [7:0] ID;
+  reg [7:0] Password;
+  
+  PasswordAndIdChecker somerandomname(Password,ID,IndexOutput,PassAuthorized);
+  
+  initial begin
+    // no currect pass no currect id
+    ID       = 8'b11110000;
+    Password = 8'b10111011;
+    #20
+    // currect pass no currect id
+    ID       = 8'b11110000;
+    Password = 8'b10111101;
+    #20
+    // no currect pass currect id
+    ID       = 8'b10111101;
+    Password = 8'b11110000;
+    #20
+    // another no currect pass currect id
+    ID       = 8'b10111110;
+    Password = 8'b11110000;
+    #20
+    // currect pass currect id
+    ID       = 8'b10111101;
+    Password = 8'b10111000;
+    #20
+    // no currect pass no currect id
+    ID       = 8'b10010000;
+    Password = 8'b10111011;
+    #20
+    // another currect pass currect id
+    ID       = 8'b11101000;
+    Password = 8'b10110010;
+    #20 
+    $stop;
+  end
+    
+endmodule // PasswordAndIdCheckerTESTBENCH
+
+
+
+
+module ATMTESTBENCH();
+  reg Clock, Reset, Back, Eject;
+  reg [7:0] Password, ID, DestID, Request;
+  reg [2:0] Control;
+  wire ErrPass, ErrBalance;
+  wire [7:0] BalanceValue;
+  
+  ATM somerandomname(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, ErrPass,
+               ErrBalance, BalanceValue);
+  
+  initial begin
+    Clock = 1'b0;
+    forever #5 Clock = ~Clock;
+  end
+  
+  initial begin
+    Reset = 1;
+    
+    repeat (1) @(negedge Clock);
+    Reset = 0;
+    
+    repeat (1) @(negedge Clock);
+    Password = 8'b11111100;//invalid
+    ID = 8'b11111111;//invalid
+    
+    repeat (1) @(negedge Clock);
+    Password = 8'b10101011;//valid
+    ID = 8'b10101011;//valid
+    
+    repeat (1) @(negedge Clock);
+    Control = 3'b010;
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b1;
+    Control = 3'b100;
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b0;
+    Request = 8'b11111111;//not possible
+    
+    repeat (1) @(negedge Clock);
+    Request = 8'b00001110;
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b1;
+    Control = 3'bxxx;
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b0;
+    
+    $stop;
+  end
+
+  
+endmodule // ATMTESTBENCH
