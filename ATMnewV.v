@@ -58,7 +58,7 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
               WITHDRAW      = 3'b011,
               WITHDRAWSHOW  = 3'b100,
               TRANSFER      = 3'b101,
-              wwwwwwww      = 3'b110;
+              DEPOSIT       = 3'b110;
   
   reg [2:0] State, NextState;
   reg [7:0] accounts_balance_ROM [0:9];
@@ -108,8 +108,8 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
               NextState = WITHDRAWSHOW;
             TRANSFER:
               NextState = TRANSFER;
-            wwwwwwww:
-              NextState = wwwwwwww; 
+            DEPOSIT:
+              NextState = DEPOSIT; 
             default
               NextState = IDLE;
           endcase
@@ -187,7 +187,7 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
             NextState = SHOWBALANCE;
             ErrBalance = OFF;
             ErrTransf = OFF;
-            accounts_balance_ROM[destIndex] = accounts_balance_ROM[index] + Request;
+            accounts_balance_ROM[destIndex] = accounts_balance_ROM[destIndex] + Request;
             accounts_balance_ROM[index] = accounts_balance_ROM[index] - Request;
           end
           else if (Request > accounts_balance_ROM[index]) begin
@@ -200,7 +200,20 @@ module ATM(Clock, Reset, Password, ID,DestID, Control, Back, Eject, Request, Err
             ErrTransf = X;
             NextState = TRANSFER;
           end
-      end
+        end
+        DEPOSIT: begin
+          if (Back) begin
+            ErrBalance = OFF;
+            NextState = IDLE;
+          end
+          else if (Eject) begin
+            ErrBalance = OFF;
+            NextState = CHECKPASS;
+          end
+          else begin
+            accounts_balance_ROM[index] = accounts_balance_ROM[index] + Request;
+          end
+        end
     endcase 
   end
 
