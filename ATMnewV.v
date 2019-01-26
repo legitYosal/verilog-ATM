@@ -294,14 +294,25 @@ module ATMTESTBENCH();
     
     repeat (1) @(negedge Clock);
     Back = 1'b1;
-    Control = 3'b100;
+    Control = 3'b000;
     
     repeat (1) @(negedge Clock);
     Back = 1'b0;
-    Request = 8'b11111111;//not possible
+    Control = 3'b100;
     
     repeat (1) @(negedge Clock);
-    Request = 8'b00001110;
+    Request = 8'b11111111;//not possible
+    
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b1;
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b0;
+        
+    repeat (1) @(negedge Clock);
+    Request = 8'b00001110;//possible
+    
     
     repeat (1) @(negedge Clock);
     Back = 1'b1;
@@ -309,7 +320,33 @@ module ATMTESTBENCH();
     
     repeat (1) @(negedge Clock);
     Back = 1'b0;
+    Control = 3'b101;
     
+    repeat (1) @(negedge Clock);
+    Request = 8'b00000010;//valid
+    DestID = 8'b00000001; //valid Id
+    
+    repeat (1) @(negedge Clock);
+    Control = 3'b000;
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b1;
+    
+    repeat (1) @(negedge Clock);
+    Back = 1'b0;
+    Eject = 1'b1;
+    Password = 8'bxxxxxxxx;
+    ID = 8'bxxxxxxxx;
+    
+    repeat (1) @(negedge Clock);
+    Eject = 1'b0;
+    Password = 8'b11110000;
+    ID = 8'b00000001;
+    
+    repeat (1) @(negedge Clock);
+    Control = 3'b010;
+    
+    #40   
     $stop;
   end
 
